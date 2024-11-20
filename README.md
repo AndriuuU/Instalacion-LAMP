@@ -1,22 +1,23 @@
-# Práctica: Administración de WordPress con WP-CLI
+# Instalación de la Pila LAMP en Ubuntu Server
 
-## Descripción
-Este repositorio contiene un proyecto para la instalación y administración de un sitio WordPress mediante WP-CLI.
+Este tutorial describe cómo instalar una pila LAMP (Linux, Apache, MySQL y PHP) junto con herramientas adicionales (phpMyAdmin, Adminer y GoAccess) en una máquina virtual con Ubuntu Server. Todo el proceso será automatizado mediante scripts Bash.
 
-## Pasos de Instalación
-1. **Instalar la Pila LAMP**:
-    Ejecutar `install_lamp.sh` para instalar Apache, MySQL y PHP.
+---
 
-2. **Instalar y Configurar WP-CLI**:
-    Descarga WP-CLI e instala WordPress con el script `deploy_wordpress_with_wpcli.sh`.
+## Requisitos Previos
 
-3. **Configurar HTTPS con Let’s Encrypt**:
-    Ejecuta `setup_letsencrypt_https.sh` para obtener un certificado SSL gratuito y configurar HTTPS.
+1. **Máquina Virtual**: 
+   - Crea una máquina virtual en VirtualBox:
+     - Sistema operativo: Ubuntu Server (64-bit).
+     - RAM: Al menos 2 GB.
+     - Disco duro: Al menos 20 GB.
+   - Conecta la ISO de Ubuntu Server descargada de [Ubuntu](https://ubuntu.com/download/server).
+   - Configura red con NAT y reenvío de puertos:
+     - SSH: 2222 → 22
+     - HTTP: 8080 → 80
+     - HTTPS: 8443 → 443.
 
-## Scripts de Bash
-- **install_lamp.sh**: Automatiza la instalación de la pila LAMP.
-- **deploy_wordpress_with_wpcli.sh**: Configura la base de datos e instala WordPress usando WP-CLI.
-- **setup_letsencrypt_https.sh**: Configura HTTPS para el dominio WordPress.
-
-## Variables de Entorno
-Definidas en `.env` para almacenar configuraciones reutilizables.
+2. **Sistema actualizado**:
+   Después de instalar Ubuntu Server, ejecuta:
+   ```bash
+   sudo apt update && sudo apt upgrade -y
